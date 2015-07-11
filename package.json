@@ -1,0 +1,15 @@
+{
+  "name": "learn-websockets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Peter Dulworth",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.1",
+    "socket.io": "^1.3.5"
+  }
+}
