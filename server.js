@@ -1,17 +1,35 @@
-var app = require('express')(),
+var express = require('express'),
+    app = express(),
     http = require('http').Server(app),
+    port = process.env.PORT || 3000,
+    chalk = require('chalk'),
     io = require('socket.io')(http);
 
+app.use(express.static(__dirname));
+
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
+    var path = __dirname + '/public/index.html'
+    res.sendFile(path);
 });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+var connectCounter = 0;
+
+io.on('connection', function(socket) {
+
+    connectCounter++;
+    io.emit('user count', connectCounter);
+    console.log('User Connected: ' + connectCounter);
+
+    socket.on('chat message', function(msg) {
+        io.emit('chat message', msg);
+    });
+    socket.on('disconnect', function() {
+        connectCounter--;
+        io.emit('user count', connectCounter);
+        console.log('User Disconnected: ' + connectCounter);
+    });
 });
 
-http.listen(3000, function () {
-    console.log('listening on 3000');
+http.listen(port, function () {
+    console.log(chalk.bgMagenta('Magic happens on port ' + port));
 });

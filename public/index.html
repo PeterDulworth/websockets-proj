@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Socket.IO chat</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/node_modules/materialize-css/bin/materialize.css">
+        <link rel="stylesheet" type="text/css" href="/public/styles.css">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+    <body>
+        <header>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper teal lighten-2">
+                        <a href="#" class="brand-logo center"><i class="fa fa-paper-plane"> &nbsp; Chat</i></a><span class="badge white-text"><i id="users" class="fa fa-users"></i></span>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <ul id="messages"></ul>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <form>
+                    <div class="row">
+                        <div class="input-field col s10 m11">
+                            <input id="m" type="text" autocomplete="off">
+                            <label class="active" for="m">Message</label>
+                        </div>
+                        <div class="col s2 m1">
+                            <button class="btn waves-effect waves-light" type="submit"><i class="material-icons">send</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </footer>
+
+        <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/node_modules/materialize-css/bin/materialize.js"></script>
+        <script src="/public/app.js"></script>
+    </body>
+</html>
